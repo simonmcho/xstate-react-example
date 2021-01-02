@@ -1,5 +1,5 @@
 # Using XState with React Example
-The purpose of this repository is to show a react implementation of xState. xState uses the concept of a Finite State Machine to declaratively write states for an application.
+The purpose of this repository is to show a react implementation of xState. xState uses the concept of a [Finite State Machine](https://xstate.js.org/docs/about/concepts.html) to declaratively write states for an application. It also shows that machine definitions are not bound to a framework. This example shows how machine states can be written in plain JavaScript, and its implementations in other frameworks such as React, Angular, Vue can utilize the machine states somewhat easily.
 
 
 ## How to get started
