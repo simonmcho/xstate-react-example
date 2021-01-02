@@ -1,39 +1,77 @@
-const DataVisualization = () => {
+import pt from 'prop-types'
+
+const dataRowStyle = {
+  background: 'orange',
+  padding: '4px 0',
+  margin: '4px auto',
+  width: '50%'
+}
+
+const loadingStyle = {
+  width: '50%',
+  margin: '4px auto',
+  padding: '6px 0',
+  background: 'blue',
+  height: '40px',
+  color: 'white',
+  textAlign: 'center'
+}
+
+const buttonStyle = {
+  width: '50%',
+  margin: '4px auto',
+  height: '60px',
+  background: 'green',
+  textAlign: 'center'
+}
+
+const DataVisualization = ({
+  data,
+  isLoading,
+  isMore,
+  sendLoad
+}) => {
   return (
     <div>
-      <ul>
+      <ul style={{ listStyle: 'none' }}>
         {
-          [].map((row) => {
+          data.map((row) => {
             return (
-              <li key={row} style={{ background: 'orange' }}>
+              <li key={row} style={dataRowStyle}>
                 {row}
               </li>
             )
           })
         }
+        {
+          isLoading && (
+            <li style={loadingStyle}>
+              Loading...
+            </li>
+          )
+        }
+        {
+          isMore && (
+            <li style={buttonStyle}>
+              <button type="button" onClick={sendLoad}>Load More</button>
+            </li>
+          )
+        }
       </ul>
-      <li
-        style={{
-          width: '80%',
-          margin: '0 auto',
-          height: '25vh',
-          border: '1px solid black'
-        }}
-      >
-        Loading...
-      </li>
-      <li
-        style={{
-          width: '80%',
-          margin: '0 auto',
-          height: '25vh',
-          background: 'green'
-        }}
-      >
-        <button type="button" onClick={() => {}}>Load More</button>
-      </li>
     </div>
   )
+}
+
+DataVisualization.propTypes = {
+  data: pt.array.isRequired,
+  isLoading: pt.bool,
+  isMore: pt.bool,
+  sendLoad: pt.func.isRequired
+}
+
+DataVisualization.defaultProps = {
+  isLoading: false,
+  isMore: false
 }
 
 export default DataVisualization
